@@ -4,6 +4,9 @@ ${DOLLAR}wgGroupPermissions['sysop']['mwoauthproposeconsumer'] = true;
 ${DOLLAR}wgGroupPermissions['sysop']['mwoauthmanageconsumer'] = true;
 ${DOLLAR}wgGroupPermissions['sysop']['mwoauthviewprivate'] = true;
 ${DOLLAR}wgGroupPermissions['sysop']['mwoauthupdateownconsumer'] = true;
+# prevent anonymous edits and creation of user accounts
+${DOLLAR}wgGroupPermissions['*']['edit'] = false;
+${DOLLAR}wgGroupPermissions['*']['createaccount'] = false;
 
 # WikibaseImport
 require_once "${DOLLAR}IP/extensions/WikibaseImport/WikibaseImport.php";
@@ -25,3 +28,6 @@ wfLoadExtension( 'cldr' );
 
 #EntitySchema
 wfLoadExtension( 'EntitySchema' );
+
+# formatter URLs
+${DOLLAR}wgWBRepoSettings['formatterUrlProperty'] = 'P2';
