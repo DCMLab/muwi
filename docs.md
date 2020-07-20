@@ -35,9 +35,10 @@ Added to wdqs-frontend.yml:
 
 Added to wikibase.yml:
 
-    - name: MW_SITE_NAME
-      value: "MuseWiki"
-
+      - name: MW_SITE_NAME
+        value: "MuseWiki"
+      - name: MW_SITE_LANG
+        value: "en"
 
 Changes to LocalSettings.php.wikibase-bundle.template:
 
@@ -47,3 +48,17 @@ Changes to LocalSettings.php.wikibase-bundle.template:
     # prevent anonymous edits and creation of user accounts
     $wgGroupPermissions['*']['edit'] = false;
     $wgGroupPermissions['*']['createaccount'] = false;
+
+## Building the docker image and pushing it to the registry
+
+Navigate to the folder with the Dockerfile and run
+
+    docker build -t muwi:[version_tag] .
+
+Login to the registry (on campus or VPN)
+
+    docker login ic-registry.epfl.ch
+
+Determine the image's name and tag in the registry
+
+    docker tag muwi:[local_tag] ic-registry.epfl.ch/dcml/muwi:[registry_tag]

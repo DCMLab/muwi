@@ -1,7 +1,7 @@
 FROM ubuntu:xenial as fetcher
 
 RUN apt-get update && \
-    apt-get install --yes --no-install-recommends unzip=6.* jq=1.* curl=7.* ca-certificates=201* && \
+    apt-get install --yes --no-install-recommends unzip=6.* jq=1.* curl=7.* ca-certificates=201* nano=3.* vim=2* && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 COPY download-extension.sh .
@@ -48,6 +48,7 @@ RUN apt-get update && \
 COPY --from=composer /var/www/html /var/www/html
 COPY LocalSettings.php.wikibase-bundle.template /LocalSettings.php.wikibase-bundle.template
 COPY extra-install.sh /
+COPY EPFL_Logo_Digital_RGB_PROD.png /var/www/html/resources/assets/wiki.png
 COPY extra-entrypoint-run-first.sh /
 RUN cat /LocalSettings.php.wikibase-bundle.template >> /LocalSettings.php.template && rm /LocalSettings.php.wikibase-bundle.template
 COPY oauth.ini /templates/oauth.ini
