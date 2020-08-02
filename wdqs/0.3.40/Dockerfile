@@ -4,7 +4,7 @@ RUN apt-get update && \
     apt-get install --yes --no-install-recommends unzip=6.* && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-ADD https://archiva.wikimedia.org/repository/releases/org/wikidata/query/rdf/service/0.3.40/service-0.3.40-dist.tar.gz ./service-dist.tar.gz
+ADD https://drive.switch.ch/index.php/s/TqY9h0SlXMGqKwX/download ./service-dist.tar.gz
 
 RUN tar xfv service-dist.tar.gz && rm service-dist.tar.gz
 
@@ -28,7 +28,7 @@ ENV MEMORY=""\
     HEAP_SIZE="1g"\
     HOST="0.0.0.0"\
     WDQS_ENTITY_NAMESPACES="120,122"\
-    WIKIBASE_SCHEME="http"\
+    WIKIBASE_SCHEME="https"\
     WIKIBASE_MAX_DAYS_BACK="90"
 
 WORKDIR /wdqs
