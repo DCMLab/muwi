@@ -48,7 +48,7 @@ RUN apt-get update && \
 COPY --from=composer /var/www/html /var/www/html
 COPY LocalSettings.php.wikibase-bundle.template /LocalSettings.php.wikibase-bundle.template
 COPY extra-install.sh /
-COPY EPFL_Logo_Digital_RGB_PROD.png /var/www/html/resources/assets/wiki.png
+COPY EPFL_Logo_Digital_RGB_PROD_square_small.png /var/www/html/resources/assets/wiki.png
 COPY extra-entrypoint-run-first.sh /
 RUN cat /LocalSettings.php.wikibase-bundle.template >> /LocalSettings.php.template && rm /LocalSettings.php.wikibase-bundle.template
 COPY oauth.ini /templates/oauth.ini

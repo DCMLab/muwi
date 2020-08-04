@@ -40,6 +40,16 @@ Added to wikibase.yml:
       - name: MW_SITE_LANG
         value: "en"
 
+Added to wdqs.yml:
+
+    - name: WIKIBASE_SCHEME
+      value: "https"
+
+Added to wdqs-updater.yml:
+
+    - name: WIKIBASE_SCHEME
+    value: "https"
+
 Changes to LocalSettings.php.wikibase-bundle.template:
 
     # formatter URLs
@@ -48,6 +58,16 @@ Changes to LocalSettings.php.wikibase-bundle.template:
     # prevent anonymous edits and creation of user accounts
     $wgGroupPermissions['*']['edit'] = false;
     $wgGroupPermissions['*']['createaccount'] = false;
+
+## Configuring Quickstatements
+
+* Go to https://muwi.epfl.ch/wiki/Special:OAuthConsumerRegistration/propose
+  * Application name: QuickStatements
+  * OAuth "callback" URL: https://mwquick.epfl.ch/api.php
+  * Allow consumer to specify a callback in requests and use "callback" URL above as a required prefix: Yes
+  * Rights: High-volume editing, Edit existing pages, Edit protected pages, Create, edit, and move pages
+* Save consumerKey and consumerSecret and add it to /quickstatements/data/oauth.ini in the pod.
+* Go to https://muwi.epfl.ch/wiki/Special:OAuthManageConsumers/proposed and approve the request
 
 ## Building the docker image and pushing it to the registry
 
@@ -62,3 +82,4 @@ Login to the registry (on campus or VPN)
 Determine the image's name and tag in the registry
 
     docker tag muwi:[local_tag] ic-registry.epfl.ch/dcml/muwi:[registry_tag]
+    docker push ic-registry.epfl.ch/dcml/muwi:[registry_tag]

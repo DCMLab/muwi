@@ -5,7 +5,8 @@ RUN apt-get update && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN git clone https://phabricator.wikimedia.org/source/tool-quickstatements.git quickstatements
-RUN git clone --depth 1 https://bitbucket.org/magnusmanske/magnustools.git magnustools
+RUN git clone https://laserjeyes@bitbucket.org/laserjeyes/magnustools.git
+
 
 RUN rm -rf quickstatements/.git
 RUN rm -rf magnustools/.git
@@ -21,7 +22,7 @@ FROM php:7.2-apache
 
 # Install envsubst
 RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install --yes --no-install-recommends gettext-base=0.19.* jq=1.5* && \
+    DEBIAN_FRONTEND=noninteractive apt-get install --yes --no-install-recommends gettext-base=0.19.* jq=1.5* nano && \
     rm -rf /var/lib/apt/lists/*
 
 COPY --from=composer /quickstatements /var/www/html/quickstatements
