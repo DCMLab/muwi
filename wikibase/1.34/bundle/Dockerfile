@@ -42,7 +42,7 @@ RUN composer install --no-dev
 FROM wikibase/wikibase:1.34
 
 RUN apt-get update && \
-    apt-get install --yes --no-install-recommends jq=1.* && \
+    apt-get install --yes --no-install-recommends jq=1.* nano && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 COPY --from=composer /var/www/html /var/www/html

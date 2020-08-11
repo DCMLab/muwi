@@ -40,15 +40,11 @@ Added to wikibase.yml:
       - name: MW_SITE_LANG
         value: "en"
 
-Added to wdqs.yml:
+Added to wdqs.yml AND to wdqs-updater.yml:
 
     - name: WIKIBASE_SCHEME
       value: "https"
 
-Added to wdqs-updater.yml:
-
-    - name: WIKIBASE_SCHEME
-    value: "https"
 
 Changes to LocalSettings.php.wikibase-bundle.template:
 
@@ -59,6 +55,24 @@ Changes to LocalSettings.php.wikibase-bundle.template:
     $wgGroupPermissions['*']['edit'] = false;
     $wgGroupPermissions['*']['createaccount'] = false;
 
+Add "New Item and "New Property to sidebar": Edit https://muwi.epfl.ch/w/index.php?title=MediaWiki:Sidebar to
+
+    * navigation
+    ** mainpage|mainpage-description
+    ** recentchanges-url|recentchanges
+    ** randompage-url|randompage
+    ** helppage|help-mediawiki
+    * actions
+    ** Special:NewItem|New item
+    ** Special:NewProperty|New property
+    * SEARCH
+    * TOOLBOX
+    * LANGUAGES
+
+## Changing the prefixes in wdqs_updater
+
+Replace all `http://www.wikidata.org` by `https://muwi.epfl.ch` in the files `embed.wdqs.min.7422d3a4ab293343eb08.js` and `wdqs.min.80f60aedc9f4a347615d.js` in the folder `/usr/share/nginx/html/js`
+
 ## Configuring Quickstatements
 
 * Go to https://muwi.epfl.ch/wiki/Special:OAuthConsumerRegistration/propose
@@ -68,6 +82,8 @@ Changes to LocalSettings.php.wikibase-bundle.template:
   * Rights: High-volume editing, Edit existing pages, Edit protected pages, Create, edit, and move pages
 * Save consumerKey and consumerSecret and add it to /quickstatements/data/oauth.ini in the pod.
 * Go to https://muwi.epfl.ch/wiki/Special:OAuthManageConsumers/proposed and approve the request
+
+
 
 ## Building the docker image and pushing it to the registry
 
