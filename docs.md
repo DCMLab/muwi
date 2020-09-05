@@ -83,6 +83,9 @@ Replace all `http://www.wikidata.org` by `https://muwi.epfl.ch` in the files `em
 * Save consumerKey and consumerSecret and add it to /quickstatements/data/oauth.ini in the pod.
 * Go to https://muwi.epfl.ch/wiki/Special:OAuthManageConsumers/proposed and approve the request
 
+## Logging into MYSQL
+
+    kubectl exec -it [mysql-pod] -- mysql -u wikiuser -psqlpass -D my_wiki
 
 
 ## Building the docker image and pushing it to the registry
