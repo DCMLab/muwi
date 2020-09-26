@@ -68,6 +68,22 @@ Add "New Item and "New Property to sidebar": Edit https://muwi.epfl.ch/w/index.p
     * SEARCH
     * TOOLBOX
     * LANGUAGES
+    
+    
+## Trying to make sending mail work
+
+Added to /var/www/html/LocalSettings.php (without success):
+
+$wgEnableEmail = true;
+
+$wgSMTP = [
+	'host'     => "smtp.mail.ch",
+	'IDHost'   => "mail.ch",
+	'port'     => 25,
+	'auth'     => true,
+	'username' => "muwi",
+	'password' => "pw"       
+];
 
 ## Changing the prefixes in wdqs_updater
 
