@@ -59,6 +59,8 @@ Add "New Item and "New Property to sidebar": Edit https://muwi.epfl.ch/w/index.p
 
     * navigation
     ** mainpage|mainpage-description
+    ** Special:AllPages|List of articles
+    ** Special:ListProperties|List of properties
     ** recentchanges-url|recentchanges
     ** randompage-url|randompage
     ** helppage|help-mediawiki
@@ -99,9 +101,25 @@ Replace all `http://www.wikidata.org` by `https://muwi.epfl.ch` in the files `em
 * Save consumerKey and consumerSecret and add it to /quickstatements/data/oauth.ini in the pod.
 * Go to https://muwi.epfl.ch/wiki/Special:OAuthManageConsumers/proposed and approve the request
 
+## Changing character limits for strings
+
+*live*: In the Wikibase container, change /var/www/html/extensions/Wikibase/repo/config/Wikibase.default.php change the corresponding values in 'string-limits' (l.44)
+
 ## Logging into MYSQL
 
     kubectl exec -it [mysql-pod] -- mysql -u wikiuser -psqlpass -D my_wiki
+
+## MYSQL dump
+
+Log into mysql container and then:
+
+    mysqldump -u wikiuser -psqlpass my_wiki > my_wiki.sql
+
+
+### Deleting sites
+
+    TRUNCATE TABLE sites;
+    TRUNCATE TABLE site_identifiers;
 
 
 ## Building the docker image and pushing it to the registry
